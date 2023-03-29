@@ -33,5 +33,5 @@ module "eks" {
   source = "git::https://github.com/Mitya00/aws-terraform-finalmodule.git//eks?ref=main"
 env = "dev"
 vpc_id = module.networking.vpc_id
-privet_subnet_ids = module.networking.public_subnets[0]
+privet_subnet_ids = module.networking.public_subnets
 }
