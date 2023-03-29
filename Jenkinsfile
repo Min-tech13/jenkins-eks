@@ -17,24 +17,23 @@ pipeline{
     stage('terraform apply') {
     steps {
         
-        withcredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVarible: 'AWS_SECRET_ACCESS_KEY')]) {
+        withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVarible: 'AWS_SECRET_ACCESS_KEY')]) {
         sh 'terraform apply  -auto-approve '
         }
     }
     }
     stage('terraform destroy') {
     input {
-    message 'Please select environment'
+    message 'Are you sure to destroy all app'
     id 'envId'
     ok 'Submit'
-    submitterParameter 'approverId'
     parameters {
-        choice choices: ['es', 'No'], name: 'envType'
+        choice choices: ['no', 'yes', 'minnn', 'destroy'], name: 'proceed'
     }
     }
     steps {
         withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVarible: 'AWS_SECRET_ACCESS_KEY')]) {
-        sh 'terraform destroy -auto-approve '
+         sh 'terraform ${proceed} -auto-approve '
         }
     }
     }
