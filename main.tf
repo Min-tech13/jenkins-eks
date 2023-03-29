@@ -10,15 +10,15 @@
 provider "aws" {
   region = "us-east-1"
 }
-terraform {
-  backend "remote" {
-    organization = "final-project"
+# terraform {
+#   backend "remote" {
+#     organization = "final-project"
 
-    workspaces {
-      name = "statefiles"
-    }
-  }
-}
+#     workspaces {
+#       name = "statefiles"
+#     }
+#   }
+# }
 
 module "networking" {
   source              = "git::https://github.com/Mitya00/aws-terraform-finalmodule.git//vpc?ref=main"
