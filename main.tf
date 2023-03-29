@@ -23,7 +23,7 @@ provider "aws" {
 module "networking" {
   source              = "git::https://github.com/Mitya00/aws-terraform-finalmodule.git//vpc?ref=main"
   env                 = "dev"
-  subnet_cidrs = ["10.0.1.0/24"]
+  subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
   vpc_cidr            = "10.0.0.0/16"
   
 
