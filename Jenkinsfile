@@ -18,7 +18,7 @@ pipeline{
     steps {
         
         s([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVarible: 'AWS_SECRET_ACCESS_KEY')]) {
-        sh 'kubectl apply  -auto-approve '
+        sh 'terraform apply  -auto-approve '
         }
     }
     }
